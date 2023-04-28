@@ -9,14 +9,28 @@ board.resizable(False, False)
 #=============================
 turn = "X"
 
-def btn_click(btn:Button):
+
+
+def btn_click(btn:Button, btn_ls:list):
+    button1, button2, button3, button4, button5, button6, button7, button8, button9 = btn_ls
     global turn
     btn['text'] = turn
+    btn['disabledforeground'] = '#fff'
     if turn == 'X':
+        btn['bg'] = '#597883'
         turn = 'O'
     else:
+        btn['bg'] = '#bc544b'
         turn = 'X'
-    print(turn)
+    btn['state'] = DISABLED
+    end_game = True
+    print(button3['text'])
+    for cell in btn_ls:
+        if cell['text'] == "     ":
+            end_game = False
+        
+    if end_game:
+        messagebox.showinfo("Draw!", "It's a tie, This game has no winner.")
 
 def start_game(start_btn:Button):
     global turn
@@ -24,32 +38,34 @@ def start_game(start_btn:Button):
     start_btn['bg'] = "#1338be"
     start_btn['command'] = game
 
-    button1 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button1))
+    button1 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button1, btns_ls))
     button1.place(x=4, y=80)
 
-    button2 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button2))
+    button2 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button2, btns_ls))
     button2.place(x=4, y=165)
 
-    button3 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button3))
+    button3 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button3, btns_ls))
     button3.place(x=4, y=250)
 
-    button4 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button4))
+    button4 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button4, btns_ls))
     button4.place(x=92, y=80)
 
-    button5 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button5))
+    button5 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button5, btns_ls))
     button5.place(x=92, y=165)
 
-    button6 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button6))
+    button6 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button6, btns_ls))
     button6.place(x=92, y=250)
 
-    button7 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button7))
+    button7 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button7, btns_ls))
     button7.place(x=180, y=80)
 
-    button8 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button8))
+    button8 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button8, btns_ls))
     button8.place(x=180, y=165)
 
-    button9 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button9))
+    button9 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button9, btns_ls))
     button9.place(x=180, y=250)
+
+    btns_ls = [button1, button2, button3, button4, button5, button6, button7, button8, button9]
 
 #=============================
 def game():    
