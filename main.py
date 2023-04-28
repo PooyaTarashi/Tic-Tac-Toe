@@ -7,37 +7,49 @@ board.geometry("360x340")
 board.config(bg="#eee")
 board.resizable(False, False)
 #=============================
+turn = "X"
+
+def btn_click(btn:Button):
+    global turn
+    btn['text'] = turn
+    if turn == 'X':
+        turn = 'O'
+    else:
+        turn = 'X'
+    print(turn)
+
 def start_game(start_btn:Button):
+    global turn
     start_btn['text'] = "Reset Game"
     start_btn['bg'] = "#1338be"
     start_btn['command'] = game
-    
-    button1 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
+
+    button1 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button1))
     button1.place(x=4, y=80)
 
-    button2 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
+    button2 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button2))
     button2.place(x=4, y=165)
 
-    button3 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
+    button3 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button3))
     button3.place(x=4, y=250)
 
-    button4 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button4.place(x=94, y=80)
+    button4 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button4))
+    button4.place(x=92, y=80)
 
-    button5 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button5.place(x=94, y=165)
+    button5 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button5))
+    button5.place(x=92, y=165)
 
-    button6 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button6.place(x=94, y=250)
+    button6 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button6))
+    button6.place(x=92, y=250)
 
-    button7 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button7.place(x=184, y=80)
+    button7 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button7))
+    button7.place(x=180, y=80)
 
-    button8 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button8.place(x=184, y=165)
+    button8 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button8))
+    button8.place(x=180, y=165)
 
-    button9 = Button(board, text="     ", font='Times 20 bold', bg='#fff', fg='white', height=2, width=5)
-    button9.place(x=184, y=250)
+    button9 = Button(board, text="     ", font='CircularStd-Bold 20', bg='#fff', fg='black', height=2, width=5, command=lambda: btn_click(button9))
+    button9.place(x=180, y=250)
 
 #=============================
 def game():    
